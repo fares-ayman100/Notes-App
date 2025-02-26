@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/Widget/custom_appbar.dart';
-import 'package:notes_app/Widget/custom_notes_item.dart';
 import 'package:notes_app/Widget/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
