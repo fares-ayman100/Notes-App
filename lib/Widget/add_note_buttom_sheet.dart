@@ -16,7 +16,7 @@ class AddNoteButtomSheet extends StatelessWidget {
 }
 
 class TextFormAddNote extends StatefulWidget {
-  TextFormAddNote({super.key});
+  const TextFormAddNote({super.key});
 
   @override
   State<TextFormAddNote> createState() => _TextFormAddNoteState();
