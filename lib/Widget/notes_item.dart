@@ -37,20 +37,25 @@ class NoteItem extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 25, bottom: 16),
                     child: Text(
                       note.subTitle,
-                      style: TextStyle(fontSize: 22, color: Color(0xffB59063)),
+                      style: TextStyle(fontSize: 22, color: Colors.black),
                     ),
                   ),
-                  trailing: Icon(
-                    FontAwesomeIcons.trash,
-                    size: 32,
-                    color: Colors.black,
+                  trailing: IconButton(
+                    onPressed: () {
+                      note.delete();
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.trash,
+                      color: Colors.black,
+                      size: 32,
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 32),
                   child: Text(
                     note.date,
-                    style: TextStyle(fontSize: 20, color: Color(0xffB59063)),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
               ],
