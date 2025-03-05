@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/Cubit/add_note_cubit/add_note_cubit.dart';
-import 'package:notes_app/Cubit/notes/notes_cubit.dart';
+import 'package:notes_app/constant.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
   final Color color;
 
-  @override
+  
   final bool isActive;
 
+  @override
   Widget build(BuildContext context) {
     return isActive
         ? CircleAvatar(
@@ -29,15 +30,7 @@ class CustomListView extends StatefulWidget {
 }
 
 class _CustomListViewState extends State<CustomListView> {
-  List<Color> colors = [
-    Color(0xffFAD4D8),
-    Color(0xffB4CEB3),
-    Color(0xffE2A3C7),
-    Color(0xffA8DCD9),
-    Color(0xff9BB291),
-    Color(0xff235789),
-    Color(0xffE4E6C3),
-  ];
+  
   int currentSelect = 0;
   @override
   Widget build(BuildContext context) {
@@ -49,19 +42,19 @@ class _CustomListViewState extends State<CustomListView> {
           return GestureDetector(
             onTap: () {
               currentSelect = index;
-              BlocProvider.of<AddNoteCubit>(context).color = colors[index];
+              BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
               setState(() {});
             },
             child: ColorItem(
               isActive: currentSelect == index,
-              color: colors[index],
+              color: kColors[index],
             ),
           );
         },
         separatorBuilder: (context, index) {
           return SizedBox(width: 10);
         },
-        itemCount: colors.length,
+        itemCount: kColors.length,
       ),
     );
   }
