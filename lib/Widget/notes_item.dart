@@ -15,7 +15,9 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.of(
           context,
-        ).push(MaterialPageRoute(builder: (context) => EditNoteBody()));
+        ).push(
+          MaterialPageRoute(builder: (context) => EditNoteBody(note: note)),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 16),
