@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_app/constant.dart';
 
@@ -17,7 +18,9 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
+      
       onSaved: onSaved,
+      style: TextStyle(fontSize: 22, color: Colors.white),
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'Please enter some text';
@@ -27,8 +30,9 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxline,
       decoration: InputDecoration(
         hintText: hintText,
+        
 
-        hintStyle: TextStyle(color: primaryColor, fontSize: 25),
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
         border: buildBorder(),
         enabledBorder: buildBorder(Colors.white),
         focusedBorder: buildBorder(),
@@ -39,7 +43,7 @@ class CustomTextField extends StatelessWidget {
   OutlineInputBorder buildBorder([Color]) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: Color ?? primaryColor),
+      borderSide: BorderSide(color: Color ?? kprimaryColor),
     );
   }
 }

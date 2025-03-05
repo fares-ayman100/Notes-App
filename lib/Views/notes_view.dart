@@ -16,7 +16,7 @@ class NotesView extends StatelessWidget {
         width: 65,
         child: FloatingActionButton(
           shape: CircleBorder(),
-          backgroundColor: primaryColor,
+          backgroundColor: kprimaryColor,
           onPressed: () {
             showModalBottomSheet(
               isScrollControlled: true,
