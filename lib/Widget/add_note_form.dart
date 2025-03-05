@@ -25,53 +25,56 @@ class _AddNoteFormState extends State<AddNoteForm> {
     return Form(
       key: formkey,
       autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          CustomTextField(
-            maxline: 1,
-            hintText: 'Title',
-            onSaved: (value) {
-              title = value;
-            },
-          ),
-          SizedBox(height: 32),
-          CustomTextField(
-            maxline: 5,
-            hintText: 'Content',
-            onSaved: (value) {
-              subtitle = value;
-            },
-          ),
-          SizedBox(height: 16),
-          CustomListView(),
-          SizedBox(height: 16),
-          BlocBuilder<AddNoteCubit, AddNoteState>(
-            builder: (context, state) {
-              return CustomButton(
-                isLoading: state is AddNoteLoading ? true : false,
-                color: primaryColor,
-                onPressed: () {
-                  if (formkey.currentState!.validate()) {
-                    formkey.currentState!.save();
-                    var currentData = DateTime.now();
-                    var formatDate = DateFormat.yMd().format(currentData);
-                    var note = NoteModel(
-                      title: title!,
-                      subTitle: subtitle!,
-                      date: formatDate,
-                      color: Colors.blue.value,
-                    );
-                    BlocProvider.of<AddNoteCubit>(context).addNote(note);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
-                },
-              );
-            },
-          ),
-          SizedBox(height: 16),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16),
+        child: Column(
+          children: [
+            CustomTextField(
+              maxline: 1,
+              hintText: 'Title',
+              onSaved: (value) {
+                title = value;
+              },
+            ),
+            SizedBox(height: 32),
+            CustomTextField(
+              maxline: 5,
+              hintText: 'Content',
+              onSaved: (value) {
+                subtitle = value;
+              },
+            ),
+            SizedBox(height: 32),
+            CustomListView(),
+            SizedBox(height: 32),
+            BlocBuilder<AddNoteCubit, AddNoteState>(
+              builder: (context, state) {
+                return CustomButton(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  color: primaryColor,
+                  onPressed: () {
+                    if (formkey.currentState!.validate()) {
+                      formkey.currentState!.save();
+                      var currentData = DateTime.now();
+                      var formatDate = DateFormat.yMd().format(currentData);
+                      var note = NoteModel(
+                        title: title!,
+                        subTitle: subtitle!,
+                        date: formatDate,
+                        color: Colors.blue.value,
+                      );
+                      BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                );
+              },
+            ),
+            SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }
